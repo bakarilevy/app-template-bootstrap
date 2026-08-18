@@ -1,5 +1,6 @@
 import {
   IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsString,
   MaxLength,
@@ -64,4 +65,17 @@ export class ForgotPasswordDto {
   @IsEmail()
   @MaxLength(100)
   readonly email: string;
+}
+
+export class ChangeUserRoleDto {
+  @IsEnum(UserRoles)
+  @IsNotEmpty()
+  role: UserRoles;
+}
+
+export class ResetUserPasswordDto {
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(8)
+  newPassword: string;
 }
